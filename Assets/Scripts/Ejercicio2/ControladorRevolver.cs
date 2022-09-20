@@ -6,7 +6,8 @@ public class ControladorRevolver : MonoBehaviour
 {
     [SerializeField] int tirosTotales;
     [SerializeField] int tirosEnCargador;
-    bool Recargando;
+    bool recargando;
+    [SerializeField] float tiempoEntreRecarga;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class ControladorRevolver : MonoBehaviour
 
        if (Input.GetKeyDown("r") && tirosEnCargador != tirosTotales)
        {
-        Recargando = true;
+        recargando = true;
         StartCoroutine(RecargarRevolver());
        }
 
@@ -30,9 +31,9 @@ public class ControladorRevolver : MonoBehaviour
 
     void Disparar()
     {
-     if(Recargando)
+     if(recargando)
         {
-         Recargando = false;   
+         recargando = false;   
          StopCoroutine(RecargarRevolver());
         }   
       if (tirosEnCargador > 0)
@@ -43,22 +44,22 @@ public class ControladorRevolver : MonoBehaviour
       if(tirosEnCargador == 0)
       {
         Debug.Log("El arma se quedó sin balas, ahora se está recargando");  
-        Recargando = true;
+        recargando = true;
         StartCoroutine(RecargarRevolver());
       }
     }
 
     IEnumerator RecargarRevolver()
     {
-      yield return new WaitForSeconds(1f);  
-     if(Recargando)
+      yield return new WaitForSeconds(tiempoEntreRecarga);  
+     if(recargando)
      {
       tirosEnCargador += 1;
       Debug.Log("Se cargó un tiro, tiros en cargador = " + tirosEnCargador);
       if(tirosEnCargador < tirosTotales)
       {
         StartCoroutine(RecargarRevolver()); 
-      }else Recargando = false;
+      }else recargando = false;
      }
     }
 

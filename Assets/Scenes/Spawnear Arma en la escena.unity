@@ -943,6 +943,7 @@ MonoBehaviour:
   nombreArma: {fileID: 774707853}
   armas: []
   spawnPointArma: {fileID: 1011467947}
+  armaPorDefecto: espada
 --- !u!114 &2106507890
 MonoBehaviour:
   m_ObjectHideFlags: 0

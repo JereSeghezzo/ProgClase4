@@ -10,6 +10,8 @@ public class SpawnArmas : MonoBehaviour
     public Transform spawnPointArma;
     int arma_i;
     bool spawnListo;
+    int posicionArmaDefecto;
+    [SerializeField] string armaPorDefecto;
 
     void Start()
     {
@@ -21,6 +23,11 @@ public class SpawnArmas : MonoBehaviour
      spawnListo = false; 
      for(int arma_i = 0; arma_i < armas.Length; arma_i++)
      {
+        if(armas[arma_i].name == armaPorDefecto)
+        {
+         posicionArmaDefecto = arma_i;
+        }
+
         if(armas[arma_i].name == nombreArma.text)
         {
          SpawnArma(arma_i);   
@@ -29,7 +36,7 @@ public class SpawnArmas : MonoBehaviour
      } 
      if(!spawnListo)
      {
-       SpawnArma(2);    
+       SpawnArma(posicionArmaDefecto);    
      }
     }
 

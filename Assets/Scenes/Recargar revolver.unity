@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tirosTotales: 6
   tirosEnCargador: 0
-  Recargando: 0
+  tiempoEntreRecarga: 1
 --- !u!4 &1492586320
 Transform:
   m_ObjectHideFlags: 0
